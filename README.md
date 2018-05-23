@@ -44,6 +44,9 @@ https://leetcode-badge.chyroc.cn/?name=chyroc
   * `https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Solved/Total-{{.solved_question}}/{{.all_question}}-red.svg`
   * ![](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Solved/Total-{{.solved_question}}/{{.all_question}}-red.svg)
 
+*通过题目/总题目 比例
+ * `https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=SolvedRate-{{.solved_question_rate}}-green.svg`
+ * ![](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=SolvedRate-{{.solved_question_rate}}-green.svg)
 
 * 通过的提交/总提交数
   * `https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Accepted/Total-{{.accepted_submission}}/{{.all_submission}}-green.svg`

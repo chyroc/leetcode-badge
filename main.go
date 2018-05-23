@@ -1,11 +1,11 @@
 package main
 
 import (
-	"fmt"
 	"flag"
+	"fmt"
 
-	"github.com/gin-gonic/gin"
 	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
 
 	"github.com/Chyroc/leetcode-badge/internal"
 )
@@ -59,7 +59,6 @@ func main() {
 		}
 
 		shieldsData, err := internal.FetchShieldsData(c, leetcodeData)
-		fmt.Printf("err %v\n", err)
 		if err != nil {
 			c.JSON(400, map[string]interface{}{"message": err})
 			return
