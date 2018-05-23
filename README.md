@@ -10,9 +10,9 @@ svg绘制依赖于[shields.io](shields.io)，所以任何shields.io支持的语�
 
 ## 默认形式
 
-http://localhost:9090/?name=chyroc
+https://leetcode-badge.chyroc.cn/?name=chyroc
 
-![Leetcode Badge](http://localhost:9090/?name=chyroc)
+![Leetcode Badge](https://leetcode-badge.chyroc.cn/?name=chyroc)
 
 
 ## 自定义
@@ -33,19 +33,19 @@ http://localhost:9090/?name=chyroc
 ### 示例
 
 * 通过题目/总题目数
-  * `http://localhost:9090/?name=chyroc&leetcode_badge_style=Accepted/Total-{{.solved_question}}/{{.all_question}}-green.svg`
-  * ![](http://localhost:9090/?name=chyroc&leetcode_badge_style=Accepted/Total-{{.solved_question}}/{{.all_question}}-green.svg)
+  * `https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Solved/Total-{{.solved_question}}/{{.all_question}}-green.svg`
+  * ![](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Solved/Total-{{.solved_question}}/{{.all_question}}-green.svg)
 
 * 通过题目/总题目数 + 自定义的style
-  * `http://localhost:9090/?name=chyroc&leetcode_badge_style=Accepted/Total-{{.solved_question}}/{{.all_question}}-green.svg?style=flat-square`
-  * ![](http://localhost:9090/?name=chyroc&leetcode_badge_style=Accepted/Total-{{.solved_question}}/{{.all_question}}-green.svg?style=flat-square)
+  * `https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Solved/Total-{{.solved_question}}/{{.all_question}}-green.svg?style=flat-square`
+  * ![](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Solved/Total-{{.solved_question}}/{{.all_question}}-green.svg?style=flat-square)
 
 * 通过题目/总题目数 + 自定义的颜色
-  * `http://localhost:9090/?name=chyroc&leetcode_badge_style=Accepted/Total-{{.solved_question}}/{{.all_question}}-red.svg`
-  * ![](http://localhost:9090/?name=chyroc&leetcode_badge_style=Accepted/Total-{{.solved_question}}/{{.all_question}}-red.svg)
+  * `https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Solved/Total-{{.solved_question}}/{{.all_question}}-red.svg`
+  * ![](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Solved/Total-{{.solved_question}}/{{.all_question}}-red.svg)
 
 
 * 通过的提交/总提交数
-  * `http://localhost:9090/?name=chyroc&leetcode_badge_style=Accepted/Total-{{.accepted_submission}}/{{.all_submission}}-green.svg`
-  * ![](http://localhost:9090/?name=chyroc&leetcode_badge_style=Accepted/Total-{{.accepted_submission}}/{{.all_submission}}-green.svg)
+  * `https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Accepted/Total-{{.accepted_submission}}/{{.all_submission}}-green.svg`
+  * ![](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Accepted/Total-{{.accepted_submission}}/{{.all_submission}}-green.svg)
 
