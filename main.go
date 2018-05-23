@@ -20,20 +20,22 @@ func init() {
 func handlerFetchLeetcode(c *gin.Context) (data map[string]int, err error) {
 	name := c.Query("name")
 	if name == "" {
-		c.JSON(400, map[string]interface{}{"message": "name is empty"})
-		return
+		err = fmt.Errorf("name is empty")
+		c.JSON(400, map[string]interface{}{"message": err})
+		return nil, err
 	}
 
 	data, err = internal.FetchLeetcodeData(name)
 	if err != nil {
 		c.JSON(400, map[string]interface{}{"message": err})
-		return
+		return nil, err
 	} else if data == nil || len(data) == 0 {
-		c.JSON(400, map[string]interface{}{"message": fmt.Sprintf("fetch leetcode data of account: %s, result: nil", name)})
-		return
+		err = fmt.Errorf("fetch leetcode data of account: %s, result: nil", name)
+		c.JSON(400, map[string]interface{}{"message": err})
+		return nil, err
 	}
 
-	return
+	return data, nil
 }
 
 func main() {
@@ -57,15 +59,14 @@ func main() {
 		}
 
 		shieldsData, err := internal.FetchShieldsData(c, leetcodeData)
-		fmt.Printf("err %v\n",err)
+		fmt.Printf("err %v\n", err)
 		if err != nil {
 			c.JSON(400, map[string]interface{}{"message": err})
 			return
 		}
 
 		c.Writer.WriteHeader(200)
-		c.Writer.Header().Add("Content-Type", "image/svg+xml")
-		c.Writer.Header().Add("Content-Type", "charset=utf-8")
+		c.Writer.Header().Add("Content-Type", "image/svg+xml; charset=utf-8")
 		c.Writer.WriteString(shieldsData)
 
 		return
