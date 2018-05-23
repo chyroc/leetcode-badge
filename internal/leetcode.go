@@ -3,29 +3,11 @@ package internal
 import (
 	"bytes"
 	"fmt"
-	"io"
-	"io/ioutil"
-	"net/http"
 	"strconv"
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
 )
-
-func fetchLeetcode(name string) (io.Reader, error) {
-	resp, err := http.Get(fmt.Sprintf("https://leetcode.com/%s/", name))
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-
-	b, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
-	return bytes.NewReader(b), nil
-}
 
 func analysis(selection *goquery.Selection, data map[string]int) (err error) {
 	var solvedQuestion = "Solved Question"
@@ -76,11 +58,11 @@ func analysis(selection *goquery.Selection, data map[string]int) (err error) {
 }
 
 func FetchLeetcodeData(name string) (map[string]int, error) {
-	read, err := fetchLeetcode(name)
+	b, err := requestGet(fmt.Sprintf("https://leetcode.com/%s/", name))
 	if err != nil {
 		return nil, err
 	}
-	doc, err := goquery.NewDocumentFromReader(read)
+	doc, err := goquery.NewDocumentFromReader(bytes.NewReader(b))
 	if err != nil {
 		return nil, err
 	}
