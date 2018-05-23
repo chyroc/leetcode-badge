@@ -2,11 +2,19 @@ package main
 
 import (
 	"fmt"
+	"flag"
 
 	"github.com/gin-gonic/gin"
 
 	"github.com/Chyroc/leetcode-badge/internal"
 )
+
+var port int
+
+func init() {
+	flag.IntVar(&port, "port", 9090, "app port")
+	flag.Parse()
+}
 
 func main() {
 	app := gin.Default()
@@ -31,5 +39,5 @@ func main() {
 		return
 	})
 
-	app.Run(":9090")
+	app.Run(fmt.Sprintf(":%d", port))
 }
