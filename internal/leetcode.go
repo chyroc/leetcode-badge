@@ -81,6 +81,11 @@ func analysis(selection *goquery.Selection, data *LeetcodeData) (err error) {
 }
 
 func FetchLeetcodeData(name string) (*LeetcodeData, error) {
+	r, ok := cacheGet(name)
+	if ok {
+		return r, nil
+	}
+
 	b, err := requestGet(fmt.Sprintf("https://leetcode.com/%s/", name))
 	if err != nil {
 		return nil, err
@@ -105,6 +110,8 @@ func FetchLeetcodeData(name string) (*LeetcodeData, error) {
 	data.AcceptedSubmissionRateFloat = float64(data.AcceptedSubmission) / float64(data.AllSubmission)
 	data.SolvedQuestionRate = fmt.Sprintf("%.0f％", data.SolvedQuestionRateFloat*100)
 	data.AcceptedSubmissionRate = fmt.Sprintf("%.0f％", data.AcceptedSubmissionRateFloat*100)
+
+	cacheSet(name, data)
 
 	return data, nil
 }
