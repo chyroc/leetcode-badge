@@ -2,11 +2,11 @@
 
 ![Leetcode Badge](https://leetcode-badge.chyroc.cn/?name=chyroc)
 
-[英文文档](./README_en.md)
+[English Document](./README_en.md)
 
 Leetcode Badge是一个展示leetcode通过情况徽标的项目。
 
-svg绘制依赖于[shields.io](shields.io)，所以任何shields.io支持的语法，这里都适用。
+svg绘制依赖于[shields.io](http://shields.io/)，所以任何shields.io支持的语法，这里都适用。
 
 ## 示例
 
