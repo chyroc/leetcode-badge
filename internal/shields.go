@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func FetchShieldsData(c *gin.Context, leetcodeData *LeetcodeData) (string, error) {
+func fetchShieldsData(c *gin.Context, leetcodeData *LeetcodeData) (string, error) {
 	style := c.Query("leetcode_badge_style")
 
 	if style == "" {
@@ -24,10 +24,17 @@ func FetchShieldsData(c *gin.Context, leetcodeData *LeetcodeData) (string, error
 		return "", err
 	}
 
+	r, ok := cacheGetShields(string(newUrl))
+	if ok {
+		return r, nil
+	}
+
 	b, err := requestGet(fmt.Sprintf("https://img.shields.io/badge/%s", newUrl))
 	if err != nil {
 		return "", err
 	}
+
+	cacheSetShields(string(newUrl), string(b))
 
 	return string(b), nil
 }

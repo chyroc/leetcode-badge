@@ -19,7 +19,7 @@ func APP() *gin.Engine {
 			return
 		}
 
-		leetcodeData, err := FetchLeetcodeData(name)
+		leetcodeData, err := fetchLeetcodeData(name)
 		if err != nil {
 			c.String(400, err.Error())
 			return
@@ -28,7 +28,7 @@ func APP() *gin.Engine {
 			return
 		}
 
-		shieldsData, err := FetchShieldsData(c, leetcodeData)
+		shieldsData, err := fetchShieldsData(c, leetcodeData)
 		if err != nil {
 			c.String(400, err.Error())
 			return

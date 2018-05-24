@@ -80,8 +80,8 @@ func analysis(selection *goquery.Selection, data *LeetcodeData) (err error) {
 	return
 }
 
-func FetchLeetcodeData(name string) (*LeetcodeData, error) {
-	r, ok := cacheGet(name)
+func fetchLeetcodeData(name string) (*LeetcodeData, error) {
+	r, ok := cacheGetLeetcode(name)
 	if ok {
 		return r, nil
 	}
@@ -111,7 +111,7 @@ func FetchLeetcodeData(name string) (*LeetcodeData, error) {
 	data.SolvedQuestionRate = fmt.Sprintf("%.0f％", data.SolvedQuestionRateFloat*100)
 	data.AcceptedSubmissionRate = fmt.Sprintf("%.0f％", data.AcceptedSubmissionRateFloat*100)
 
-	cacheSet(name, data)
+	cacheSetLeetcode(name, data)
 
 	return data, nil
 }

@@ -2,16 +2,16 @@ package internal
 
 import "time"
 
-var Conf = new(Config)
+var Conf = new(config)
 
-type Config struct {
+type config struct {
 	Port     int
 	Cache    bool
 	CacheTTL time.Duration
 }
 
 func init() {
-	Conf = &Config{
+	Conf = &config{
 		Port:     9090,
 		Cache:    false,
 		CacheTTL: time.Hour * 2,
