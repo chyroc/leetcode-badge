@@ -7,11 +7,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func FetchShieldsData(c *gin.Context, leetcodeData map[string]int) (string, error) {
+func FetchShieldsData(c *gin.Context, leetcodeData *LeetcodeData) (string, error) {
 	style := c.Query("leetcode_badge_style")
 
-	solvedQuestionRate := float64(leetcodeData["solved_question"]) / float64(leetcodeData["all_question"])
-	acceptedSubmissionRate := float64(leetcodeData["accepted_submission"]) / float64(leetcodeData["all_submission"])
 	if style == "" {
 		style = `Leetcode | Solved/Total-{{.solved_question}}/{{.all_question}}-{{ if le .solved_question_rate_float 0.3}}red.svg{{ else if le .solved_question_rate_float 0.6}}yellow.svg{{ else }}green.svg{{ end }}`
 	}
@@ -21,16 +19,7 @@ func FetchShieldsData(c *gin.Context, leetcodeData map[string]int) (string, erro
 		return "", err
 	}
 
-	var data = make(map[string]interface{})
-	for k, v := range leetcodeData {
-		data[k] = v
-	}
-
-	data["solved_question_rate_float"] = solvedQuestionRate
-	data["accepted_submission_rate_float"] = acceptedSubmissionRate
-	data["solved_question_rate"] = fmt.Sprintf("%.0f％", solvedQuestionRate*100)
-	data["accepted_submission_rate"] = fmt.Sprintf("%.0f％", acceptedSubmissionRate*100)
-	newUrl, err := parseTmpl(style, data)
+	newUrl, err := parseTmpl(style, leetcodeData.Dump())
 	if err != nil {
 		return "", err
 	}

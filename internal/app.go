@@ -1,8 +1,6 @@
 package internal
 
 import (
-	"fmt"
-
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
@@ -14,22 +12,22 @@ func APP() *gin.Engine {
 	app.GET("", func(c *gin.Context) {
 		name := c.Query("name")
 		if name == "" {
-			c.JSON(400, "name is empty")
+			c.String(400, "name is empty")
 			return
 		}
 
 		leetcodeData, err := FetchLeetcodeData(name)
 		if err != nil {
-			c.JSON(400, err)
+			c.String(400, err.Error())
 			return
-		} else if len(leetcodeData) == 0 {
-			c.JSON(400, fmt.Errorf("fetch leetcode data of account: %s, result: nil", name))
+		} else if leetcodeData == nil {
+			c.String(400, "fetch leetcode data of account: %s, result: nil", name)
 			return
 		}
 
 		shieldsData, err := FetchShieldsData(c, leetcodeData)
 		if err != nil {
-			c.JSON(400, err)
+			c.String(400, err.Error())
 			return
 		}
 

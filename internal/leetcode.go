@@ -9,7 +9,31 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
-func analysis(selection *goquery.Selection, data map[string]int) (err error) {
+type LeetcodeData struct {
+	SolvedQuestion              int     `json:"solved_question"`
+	AllQuestion                 int     `json:"all_question"`
+	AcceptedSubmission          int     `json:"accepted_submission"`
+	AllSubmission               int     `json:"all_submission"`
+	SolvedQuestionRateFloat     float64 `json:"solved_question_rate_float"`
+	AcceptedSubmissionRateFloat float64 `json:"accepted_submission_rate_float"`
+	SolvedQuestionRate          string  `json:"solved_question_rate"`
+	AcceptedSubmissionRate      string  `json:"accepted_submission_rate"`
+}
+
+func (r *LeetcodeData) Dump() map[string]interface{} {
+	return map[string]interface{}{
+		"solved_question":                r.SolvedQuestion,
+		"all_question":                   r.AllQuestion,
+		"accepted_submission":            r.AcceptedSubmission,
+		"all_submission":                 r.AllSubmission,
+		"solved_question_rate_float":     r.SolvedQuestionRateFloat,
+		"accepted_submission_rate_float": r.AcceptedSubmissionRateFloat,
+		"solved_question_rate":           r.SolvedQuestionRate,
+		"accepted_submission_rate":       r.AcceptedSubmissionRate,
+	}
+}
+
+func analysis(selection *goquery.Selection, data *LeetcodeData) (err error) {
 	var solvedQuestion = "Solved Question"
 	var acceptedSubmission = "Accepted Submission"
 	keys := []string{solvedQuestion, acceptedSubmission}
@@ -29,26 +53,25 @@ func analysis(selection *goquery.Selection, data map[string]int) (err error) {
 				if err != nil {
 					return err
 				}
-
-				data["solved_question"] = solved
+				data.SolvedQuestion = solved
 
 				all, err := strconv.Atoi(splited[1])
 				if err != nil {
 					return err
 				}
-				data["all_question"] = all
+				data.AllQuestion = all
 			} else if key == acceptedSubmission {
 				accepted, err := strconv.Atoi(splited[0])
 				if err != nil {
 					return err
 				}
-				data["accepted_submission"] = accepted
+				data.AcceptedSubmission = accepted
 
 				all, err := strconv.Atoi(splited[1])
 				if err != nil {
 					return err
 				}
-				data["all_submission"] = all
+				data.AllSubmission = all
 			}
 			return
 		}
@@ -57,7 +80,7 @@ func analysis(selection *goquery.Selection, data map[string]int) (err error) {
 	return
 }
 
-func FetchLeetcodeData(name string) (map[string]int, error) {
+func FetchLeetcodeData(name string) (*LeetcodeData, error) {
 	b, err := requestGet(fmt.Sprintf("https://leetcode.com/%s/", name))
 	if err != nil {
 		return nil, err
@@ -67,7 +90,7 @@ func FetchLeetcodeData(name string) (map[string]int, error) {
 		return nil, err
 	}
 
-	var data = make(map[string]int)
+	var data = new(LeetcodeData)
 	doc.Find(".list-group-item").Each(func(i int, selection *goquery.Selection) {
 		if err2 := analysis(selection, data); err2 != nil {
 			err = err2
@@ -77,5 +100,11 @@ func FetchLeetcodeData(name string) (map[string]int, error) {
 	if err != nil {
 		return nil, err
 	}
+
+	data.SolvedQuestionRateFloat = float64(data.SolvedQuestion) / float64(data.AllQuestion)
+	data.AcceptedSubmissionRateFloat = float64(data.AcceptedSubmission) / float64(data.AllSubmission)
+	data.SolvedQuestionRate = fmt.Sprintf("%.0f％", data.SolvedQuestionRateFloat*100)
+	data.AcceptedSubmissionRate = fmt.Sprintf("%.0f％", data.AcceptedSubmissionRateFloat*100)
+
 	return data, nil
 }
