@@ -8,6 +8,7 @@ type config struct {
 	Port     int
 	Cache    bool
 	CacheTTL time.Duration
+	Release  bool
 }
 
 func init() {

@@ -9,6 +9,9 @@ import (
 
 func APP() *gin.Engine {
 	fmt.Printf("config %#v\n", Conf)
+	if Conf.Release {
+		gin.SetMode(gin.ReleaseMode)
+	}
 	app := gin.Default()
 	app.Use(cors.Default())
 
