@@ -9,6 +9,7 @@ import (
 
 func init() {
 	flag.IntVar(&internal.Conf.Port, "port", 9090, "app port")
+	flag.BoolVar(&internal.Conf.Cache, "cache", false, "use cache")
 	flag.Parse()
 }
 

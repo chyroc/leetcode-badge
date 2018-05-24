@@ -1,18 +1,21 @@
 package internal
 
 import (
+	"sync"
+
 	"github.com/patrickmn/go-cache"
 )
 
 var defaultCache *cache.Cache
-
-func init() {
-	if Conf.Cache {
-		defaultCache = cache.New(Conf.CacheTTL, Conf.CacheTTL*2)
-	}
-}
+var once = new(sync.Once)
 
 func cacheGet(key string) (*LeetcodeData, bool) {
+	once.Do(func() {
+		if Conf.Cache {
+			defaultCache = cache.New(Conf.CacheTTL, Conf.CacheTTL*2)
+		}
+	})
+
 	if defaultCache == nil {
 		return nil, false
 	}
@@ -30,6 +33,12 @@ func cacheGet(key string) (*LeetcodeData, bool) {
 }
 
 func cacheSet(key string, r *LeetcodeData) {
+	once.Do(func() {
+		if Conf.Cache {
+			defaultCache = cache.New(Conf.CacheTTL, Conf.CacheTTL*2)
+		}
+	})
+
 	if defaultCache != nil {
 		defaultCache.Set(key, r, Conf.CacheTTL)
 	}

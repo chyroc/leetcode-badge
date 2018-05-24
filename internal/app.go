@@ -1,11 +1,14 @@
 package internal
 
 import (
+	"fmt"
+
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
 func APP() *gin.Engine {
+	fmt.Printf("config %#v\n", Conf)
 	app := gin.Default()
 	app.Use(cors.Default())
 
