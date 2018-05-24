@@ -22,6 +22,8 @@ func APP() *gin.Engine {
 			return
 		}
 
+		logVisitor(name)
+
 		leetcodeData, err := fetchLeetcodeData(name)
 		if err != nil {
 			c.String(400, err.Error())

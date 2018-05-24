@@ -9,6 +9,7 @@ type config struct {
 	Cache    bool
 	CacheTTL time.Duration
 	Release  bool
+	LogPath  string
 }
 
 func init() {
