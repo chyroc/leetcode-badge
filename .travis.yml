@@ -1,0 +1,19 @@
+language: go
+sudo: required
+
+go:
+  - 1.10.x
+
+before_install:
+  - go get -u github.com/haya14busa/goverage
+
+script:
+  - make build
+  - ./test.sh
+
+notifications:
+  email:
+    on_success: never
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
