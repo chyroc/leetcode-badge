@@ -16,6 +16,11 @@ func init() {
 }
 
 func main() {
+	err := internal.InitConfig()
+	if err != nil {
+		panic(err)
+	}
+
 	app := internal.APP()
 	app.Run(fmt.Sprintf(":%d", internal.Conf.Port))
 }

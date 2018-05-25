@@ -1,21 +1,12 @@
 package internal
 
 import (
-	"sync"
-
 	"github.com/patrickmn/go-cache"
 )
 
 var defaultCache *cache.Cache
-var once = new(sync.Once)
 
 func cacheGetLeetcode(key string) (*LeetcodeData, bool) {
-	once.Do(func() {
-		if Conf.Cache {
-			defaultCache = cache.New(Conf.CacheTTL, Conf.CacheTTL*2)
-		}
-	})
-
 	if defaultCache == nil {
 		return nil, false
 	}
@@ -33,24 +24,12 @@ func cacheGetLeetcode(key string) (*LeetcodeData, bool) {
 }
 
 func cacheSetLeetcode(key string, r *LeetcodeData) {
-	once.Do(func() {
-		if Conf.Cache {
-			defaultCache = cache.New(Conf.CacheTTL, Conf.CacheTTL*2)
-		}
-	})
-
 	if defaultCache != nil {
 		defaultCache.Set("Leetcode"+key, r, Conf.CacheTTL)
 	}
 }
 
 func cacheGetShields(key string) (string, bool) {
-	once.Do(func() {
-		if Conf.Cache {
-			defaultCache = cache.New(Conf.CacheTTL, Conf.CacheTTL*2)
-		}
-	})
-
 	if defaultCache == nil {
 		return "", false
 	}
@@ -68,13 +47,7 @@ func cacheGetShields(key string) (string, bool) {
 }
 
 func cacheSetShields(key string, r string) {
-	once.Do(func() {
-		if Conf.Cache {
-			defaultCache = cache.New(Conf.CacheTTL, Conf.CacheTTL*2)
-		}
-	})
-
 	if defaultCache != nil {
-		defaultCache.Set("Shields"+key, r, Conf.CacheTTL)
+		defaultCache.Set("Shields"+key, r, cache.NoExpiration) // shields svg key相同，返回的数据一定相同
 	}
 }

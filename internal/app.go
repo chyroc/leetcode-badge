@@ -33,7 +33,7 @@ func APP() *gin.Engine {
 			return
 		}
 
-		shieldsData, err := fetchShieldsData(c, leetcodeData)
+		shieldsData, err := fetchShieldsData(c.Query("leetcode_badge_style"), leetcodeData)
 		if err != nil {
 			c.String(400, err.Error())
 			return
