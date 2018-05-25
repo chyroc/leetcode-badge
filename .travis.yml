@@ -9,7 +9,7 @@ before_install:
 
 script:
   - make build
-  - ./test.sh
+  - ./cover.sh
 
 notifications:
   email:
