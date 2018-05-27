@@ -84,11 +84,4 @@ func TestLeetcode(t *testing.T) {
 		as.NotEmpty(r.AcceptedSubmissionRate)
 		as.True(r.AcceptedSubmissionRateFloat >= 0.1)
 	}
-
-	{
-		r2, err := fetchShieldsData("", r)
-		as.Nil(err)
-		as.NotEmpty(r2)
-		as.Equal(`<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="190" height="20"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="190" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path fill="#555" d="M0 0h141v20H0z"/><path fill="#e05d44" d="M141 0h49v20H141z"/><path fill="url(#b)" d="M0 0h190v20H0z"/></g><g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="110"><text x="715" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="1310">Leetcode | Solved/Total</text><text x="715" y="140" transform="scale(.1)" textLength="1310">Leetcode | Solved/Total</text><text x="1645" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="390">98/804</text><text x="1645" y="140" transform="scale(.1)" textLength="390">98/804</text></g> </svg>`, r2)
-	}
 }
