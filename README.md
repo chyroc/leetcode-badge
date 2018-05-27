@@ -3,6 +3,8 @@
 [![Build Status](https://travis-ci.org/Chyroc/leetcode-badge.svg?branch=master)](https://travis-ci.org/Chyroc/leetcode-badge)
 [![Go Report Card](https://goreportcard.com/badge/github.com/Chyroc/leetcode-badge)](https://goreportcard.com/report/github.com/Chyroc/leetcode-badge)
 [![codecov](https://codecov.io/gh/Chyroc/leetcode-badge/branch/master/graph/badge.svg)](https://codecov.io/gh/Chyroc/leetcode-badge)
+
+[![leetcode badge](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode%20|%20Ranking-{{.ranking}}-green.svg)](https://codecov.io/gh/Chyroc/algorithms-go)
 [![leetcode badge](https://leetcode-badge.chyroc.cn/?name=chyroc)](https://codecov.io/gh/Chyroc/algorithms-go)
 [![leetcode badge](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode%20|%20Question-{{.solved_question_rate}}-{{%20if%20le%20.solved_question_rate_float%200.3}}red{{%20else%20if%20le%20.solved_question_rate_float%200.6}}yellow{{%20else%20}}green{{%20end%20}}.svg)](https://codecov.io/gh/Chyroc/algorithms-go)
 [![leetcode badge](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode%20|%20Submission-{{.accepted_submission_rate}}-{{%20if%20le%20.accepted_submission_rate_float%200.3}}red{{%20else%20if%20le%20.solved_question_rate_float%200.6}}yellow{{%20else%20}}green{{%20end%20}}.svg)](https://codecov.io/gh/Chyroc/algorithms-go)
@@ -19,6 +21,9 @@ svg绘制依赖于[shields.io](http://shields.io/)，所以任何shields.io支�
   > `https://leetcode-badge.chyroc.cn/?name=chyroc`
 
   > 注意：这里的颜色是会变化的 红（低于等于30％），黄（低于等于60％），绿（其他）
+
+* 排名 ![leetcode badge](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode%20|%20Ranking-{{.ranking}}-green.svg)
+  > `https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode%20|%20Ranking-{{.ranking}}-green.svg`
 
 * 通过题目/总题目数 ![](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Solved/Total-{{.solved_question}}/{{.all_question}}-green.svg)
   > `https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Solved/Total-{{.solved_question}}/{{.all_question}}-green.svg`
@@ -61,6 +66,7 @@ svg绘制依赖于[shields.io](http://shields.io/)，所以任何shields.io支�
   * `{{ le .xx 0.3 }} a {{ else if le 0.6 }} b {{ else }} c` xx小于等于0.3返回a，小于等于0.6返回b，否则返回c
 
 #### 可以使用go的模板语法使用6个变量：
+* {{.ranking}} 排名（整数）
 * {{.accepted_submission}} 通过的提交的个数（整数）
 * {{.all_submission}} 所有的提交的个数（整数）
 * {{.solved_question}} 通过的题目的个数（整数）

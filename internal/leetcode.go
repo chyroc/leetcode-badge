@@ -3,11 +3,14 @@ package internal
 import (
 	"bytes"
 	"fmt"
+	"regexp"
 	"strconv"
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
 )
+
+var reRanking = regexp.MustCompile(`(?m)pc\.init\(([\s\S]*?){`)
 
 type LeetcodeData struct {
 	SolvedQuestion              int     `json:"solved_question"`
@@ -18,6 +21,7 @@ type LeetcodeData struct {
 	AcceptedSubmissionRateFloat float64 `json:"accepted_submission_rate_float"`
 	SolvedQuestionRate          string  `json:"solved_question_rate"`
 	AcceptedSubmissionRate      string  `json:"accepted_submission_rate"`
+	Ranking                     int     `json:"ranking"`
 }
 
 func (r *LeetcodeData) Dump() map[string]interface{} {
@@ -30,6 +34,7 @@ func (r *LeetcodeData) Dump() map[string]interface{} {
 		"accepted_submission_rate_float": r.AcceptedSubmissionRateFloat,
 		"solved_question_rate":           r.SolvedQuestionRate,
 		"accepted_submission_rate":       r.AcceptedSubmissionRate,
+		"ranking":                        r.Ranking,
 	}
 }
 
@@ -80,6 +85,22 @@ func analysis(selection *goquery.Selection, data *LeetcodeData) (err error) {
 	return
 }
 
+func getRanking(html string) (int, error) {
+	x := reRanking.FindStringSubmatch(html)
+	if len(x) != 2 {
+		return 0, fmt.Errorf("get ranking length invalid")
+	}
+
+	l := strings.Replace(x[1], "\n", "", -1)
+	l = strings.Replace(l, " ", "", -1)
+	ll := strings.Split(l, ",")
+	if len(ll) < 7 {
+		return 0, fmt.Errorf("get ranking length invalid")
+	}
+
+	return strconv.Atoi(strings.Replace(ll[6], "'", "", -1))
+}
+
 func fetchLeetcodeData(name string) (*LeetcodeData, error) {
 	r, ok := cacheGetLeetcode(name)
 	if ok {
@@ -90,6 +111,7 @@ func fetchLeetcodeData(name string) (*LeetcodeData, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	doc, err := goquery.NewDocumentFromReader(bytes.NewReader(b))
 	if err != nil {
 		return nil, err
@@ -101,7 +123,11 @@ func fetchLeetcodeData(name string) (*LeetcodeData, error) {
 			err = err2
 		}
 	})
+	if err != nil {
+		return nil, err
+	}
 
+	ranking, err := getRanking(string(b))
 	if err != nil {
 		return nil, err
 	}
@@ -110,6 +136,7 @@ func fetchLeetcodeData(name string) (*LeetcodeData, error) {
 	data.AcceptedSubmissionRateFloat = float64(data.AcceptedSubmission) / float64(data.AllSubmission)
 	data.SolvedQuestionRate = fmt.Sprintf("%.0f％", data.SolvedQuestionRateFloat*100)
 	data.AcceptedSubmissionRate = fmt.Sprintf("%.0f％", data.AcceptedSubmissionRateFloat*100)
+	data.Ranking = ranking
 
 	cacheSetLeetcode(name, data)
 
