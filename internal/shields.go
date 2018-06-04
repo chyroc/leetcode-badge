@@ -1,8 +1,8 @@
 package internal
 
 import (
-	"net/url"
 	"fmt"
+	"net/url"
 )
 
 func fetchShieldsData(style string, leetcodeData *LeetcodeData) (string, error) {
