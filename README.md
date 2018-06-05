@@ -4,10 +4,10 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/Chyroc/leetcode-badge)](https://goreportcard.com/report/github.com/Chyroc/leetcode-badge)
 [![codecov](https://codecov.io/gh/Chyroc/leetcode-badge/branch/master/graph/badge.svg)](https://codecov.io/gh/Chyroc/leetcode-badge)
 
-[![leetcode badge](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode%20|%20Ranking-{{.ranking}}-green.svg)](https://codecov.io/gh/Chyroc/algorithms-go)
-[![leetcode badge](https://leetcode-badge.chyroc.cn/?name=chyroc)](https://codecov.io/gh/Chyroc/algorithms-go)
-[![leetcode badge](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode%20|%20Question-{{.solved_question_rate}}-{{%20if%20le%20.solved_question_rate_float%200.3}}red{{%20else%20if%20le%20.solved_question_rate_float%200.6}}yellow{{%20else%20}}green{{%20end%20}}.svg)](https://codecov.io/gh/Chyroc/algorithms-go)
-[![leetcode badge](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode%20|%20Submission-{{.accepted_submission_rate}}-{{%20if%20le%20.accepted_submission_rate_float%200.3}}red{{%20else%20if%20le%20.solved_question_rate_float%200.6}}yellow{{%20else%20}}green{{%20end%20}}.svg)](https://codecov.io/gh/Chyroc/algorithms-go)
+[![leetcode badge](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode%20|%20Ranking-{{.ranking}}-green.svg&refresh=true)](https://github.com/Chyroc/leetcode-badge)
+[![leetcode badge](https://leetcode-badge.chyroc.cn/?name=chyroc&refresh=true)](https://github.com/Chyroc/leetcode-badge)
+[![leetcode badge](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode%20|%20Question-{{.solved_question_rate}}-{{%20if%20le%20.solved_question_rate_float%200.3}}red{{%20else%20if%20le%20.solved_question_rate_float%200.6}}yellow{{%20else%20}}green{{%20end%20}}.svg&refresh=true)](https://github.com/Chyroc/leetcode-badge)
+[![leetcode badge](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode%20|%20Submission-{{.accepted_submission_rate}}-{{%20if%20le%20.accepted_submission_rate_float%200.3}}red{{%20else%20if%20le%20.solved_question_rate_float%200.6}}yellow{{%20else%20}}green{{%20end%20}}.svg&refresh=true)](https://github.com/Chyroc/leetcode-badge)
 
 [English Document](./README_en.md)
 
@@ -17,35 +17,35 @@ svg绘制依赖于[shields.io](http://shields.io/)，所以任何shields.io支�
 
 ## 示例
 
-* 默认风格 ![](https://leetcode-badge.chyroc.cn/?name=chyroc)
+* 默认风格 ![](https://leetcode-badge.chyroc.cn/?name=chyroc&refresh=true)
   > `https://leetcode-badge.chyroc.cn/?name=chyroc`
 
   > 注意：这里的颜色是会变化的 红（低于等于30％），黄（低于等于60％），绿（其他）
 
-* 排名 ![leetcode badge](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode%20|%20Ranking-{{.ranking}}-green.svg)
+* 排名 ![leetcode badge](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode%20|%20Ranking-{{.ranking}}-green.svg&refresh=true)
   > `https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode%20|%20Ranking-{{.ranking}}-green.svg`
 
-* 通过题目/总题目数 ![](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Solved/Total-{{.solved_question}}/{{.all_question}}-green.svg)
+* 通过题目/总题目数 ![](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Solved/Total-{{.solved_question}}/{{.all_question}}-green.svg&refresh=true)
   > `https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Solved/Total-{{.solved_question}}/{{.all_question}}-green.svg`
 
-* 通过的提交/总提交数 ![](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Accepted/Total-{{.accepted_submission}}/{{.all_submission}}-green.svg)
+* 通过的提交/总提交数 ![](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Accepted/Total-{{.accepted_submission}}/{{.all_submission}}-green.svg&refresh=true)
   > `https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Accepted/Total-{{.accepted_submission}}/{{.all_submission}}-green.svg`
 
-* 通过题目/总题目数 + 自定义的style ![](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Solved/Total-{{.solved_question}}/{{.all_question}}-green.svg?style=flat-square)
+* 通过题目/总题目数 + 自定义的style ![](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Solved/Total-{{.solved_question}}/{{.all_question}}-green.svg?style=flat-square&refresh=true)
   > `https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Solved/Total-{{.solved_question}}/{{.all_question}}-green.svg?style=flat-square`
 
-* 通过题目/总题目数 + 自定义的颜色 ![](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Solved/Total-{{.solved_question}}/{{.all_question}}-red.svg)
+* 通过题目/总题目数 + 自定义的颜色 ![](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Solved/Total-{{.solved_question}}/{{.all_question}}-red.svg&refresh=true)
   > `https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Solved/Total-{{.solved_question}}/{{.all_question}}-red.svg`
 
-* 计算不同的比例显示不同的颜色 ![](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode%20|%20Solved/Total-{{.solved_question}}/{{.all_question}}-{{if%20le%20.solved_question_rate_float%200.3}}red.svg{{else%20if%20le%20.solved_question_rate_float%200.6}}yellow.svg{{else}}green.svg{{end}})
+* 计算不同的比例显示不同的颜色 ![](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode%20|%20Solved/Total-{{.solved_question}}/{{.all_question}}-{{if%20le%20.solved_question_rate_float%200.3}}red.svg{{else%20if%20le%20.solved_question_rate_float%200.6}}yellow.svg{{else}}green.svg{{end}}&refresh=true)
   > `https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode | Solved/Total-{{.solved_question}}/{{.all_question}}-{{ if le .solved_question_rate_float 0.3}}red.svg{{ else if le .solved_question_rate_float 0.6}}yellow.svg{{ else }}green.svg{{ end }}`
 
   > 注意：这里的颜色是会变化的 红（低于等于30％），黄（低于等于60％），绿（其他）
 
-* 通过题目/总题目 比例 ![](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode%20|%20Question-{{.solved_question_rate}}-{{%20if%20le%20.solved_question_rate_float%200.3}}red{{%20else%20if%20le%20.solved_question_rate_float%200.6}}yellow{{%20else%20}}green{{%20end%20}}.svg)
+* 通过题目/总题目 比例 ![](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode%20|%20Question-{{.solved_question_rate}}-{{%20if%20le%20.solved_question_rate_float%200.3}}red{{%20else%20if%20le%20.solved_question_rate_float%200.6}}yellow{{%20else%20}}green{{%20end%20}}.svg&refresh=true)
   > `https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode | Question-{{.solved_question_rate}}-{{ if le .solved_question_rate_float 0.3}}red{{ else if le .solved_question_rate_float 0.6}}yellow{{ else }}green{{ end }}.svg`
 
-* 通过的提交/总提交数 比例 ![](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode%20|%20Submission-{{.accepted_submission_rate}}-{{%20if%20le%20.accepted_submission_rate_float%200.3}}red{{%20else%20if%20le%20.solved_question_rate_float%200.6}}yellow{{%20else%20}}green{{%20end%20}}.svg)
+* 通过的提交/总提交数 比例 ![](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode%20|%20Submission-{{.accepted_submission_rate}}-{{%20if%20le%20.accepted_submission_rate_float%200.3}}red{{%20else%20if%20le%20.solved_question_rate_float%200.6}}yellow{{%20else%20}}green{{%20end%20}}.svg&refresh=true)
   > `https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode | Submission-{{.accepted_submission_rate}}-{{ if le .accepted_submission_rate_float 0.3}}red{{ else if le .solved_question_rate_float 0.6}}yellow{{ else }}green{{ end }}.svg`
 
 
