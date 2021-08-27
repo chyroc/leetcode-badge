@@ -4,7 +4,7 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/Chyroc/leetcode-badge/internal"
+	"github.com/chyroc/leetcode-badge/internal"
 )
 
 func init() {
